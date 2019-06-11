@@ -12,6 +12,9 @@ public class Produit implements Serializable {
     private String designation;
     private double prix;
     private int quantite;
+    @ManyToOne
+    @JoinColumn(name = "ID_CAT")
+    private Categorie categorie;
 
     public Produit() {
     }
@@ -20,6 +23,13 @@ public class Produit implements Serializable {
         this.designation = designation;
         this.prix = prix;
         this.quantite = quantite;
+    }
+
+    public Produit(String designation, double prix, int quantite, Categorie categorie) {
+        this.designation = designation;
+        this.prix = prix;
+        this.quantite = quantite;
+        this.categorie = categorie;
     }
 
     public Long getId() {
@@ -52,5 +62,13 @@ public class Produit implements Serializable {
 
     public void setQuantite(int quantite) {
         this.quantite = quantite;
+    }
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
     }
 }
